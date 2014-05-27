@@ -22,3 +22,8 @@ The above example creates and submits the following HTML form:
   <input type="hidden" name="jobs[]" value="Dark Lord">
 </form>
 ```
+
+### Running Tests
+Everything needed to run the tests is included; simply drop `runner.html` into your browser and you
+should see the qUnit test results. External libraries are CDN driven and linked via `http://` urls, so
+they will load properly when loading `runner.html` via `file://`.
