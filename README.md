@@ -8,8 +8,8 @@ submits data to a URL via POST by creating and submitting a form filled with hid
 var oFauxForm = new FauxForm()
 ,   FormData = {"name":"Skywalker", "jobs":["Padawan","Dark Lord"]};
 
-oFauxForm.setURL('/path/to/action');
-oFauxForm.setData(formData);
+oFauxForm.url('/path/to/action');
+oFauxForm.data(formData);
 oFauxForm.submit();
 ```
 
