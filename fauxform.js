@@ -48,33 +48,40 @@ FauxForm.prototype.data = function(dataObject) {
         this._data = dataObject;
 };
 
+/**
+ * creates an submits the form for the set data and URL
+ * 
+ * @return [void]
+ */
 FauxForm.prototype.submit = function() {
-    var form = this.createForm()
+    var form = this._createForm()
     ,   body = document.getElementsByTagName('body')[0];
 
     body.appendChild(form);
-    form.submit();
+    $('#FauxFormForm').submit();
 };
 
-FauxForm.prototype.createForm = function() {
-    var keys   = Object.keys(this.rawData)
+FauxForm.prototype._createForm = function() {
+    var raw    = this.data()
+    ,   keys   = Object.keys(raw)
     ,   len    = keys.length
     ,   form   = document.createElement('form')
     ,   inputs = ''
     ,   value  = null
     ,   i      = 0;
 
-    form.setAttribute('action', this.url);
+    form.setAttribute('action', this.url());
     form.setAttribute('method', 'POST');
+    form.setAttribute('id', 'FauxFormForm');
 
 
     for (i=0; i<len; i++) {
-        value = this.rawData[keys[i]];
+        value = raw[keys[i]];
 
         if (Array.isArray(value))
-            inputs += this.createHiddenInputString(keys[i] + '[]', value);
+            inputs += this._createHiddenInputString(keys[i] + '[]', value);
         else
-            inputs += this.createHiddenInputString(keys[i], [value]);
+            inputs += this._createHiddenInputString(keys[i], [value]);
     }
 
     form.innerHTML = inputs;
@@ -91,7 +98,7 @@ FauxForm.prototype.createForm = function() {
  *
  * @return [str]
  */
-FauxForm.prototype.createHiddenInputString = function(fieldName, values) {
+FauxForm.prototype._createHiddenInputString = function(fieldName, values) {
     var elm, i, spool = [];
 
     for (i=0; i<values.length; i++) {
