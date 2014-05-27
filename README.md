@@ -5,12 +5,12 @@ submits data to a URL via POST by creating and submitting a form filled with hid
 
 ### Usage
 ```javascript
-var FauxForm = new FauxForm()
+var oFauxForm = new FauxForm()
 ,   FormData = {"name":"Skywalker", "jobs":["Padawan","Dark Lord"]};
 
-FauxForm.setURL('/path/to/action');
-FauxForm.setData(formData);
-FauxForm.submit();
+oFauxForm.setURL('/path/to/action');
+oFauxForm.setData(formData);
+oFauxForm.submit();
 ```
 
 The above example creates and submits the following HTML form:
