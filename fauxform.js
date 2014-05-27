@@ -26,8 +26,11 @@ function FauxForm(dataObject, url) {
  * @param [str] url
  * URL used at the value for 'action'
  */
-FauxForm.prototype.setURL = function(url) {
-    this.url = url;
+FauxForm.prototype.url = function(url) {
+    if (typeof url === 'undefined')
+        return this._url;
+    else
+        this._url = url;
 };
 
 /**
@@ -38,8 +41,11 @@ FauxForm.prototype.setURL = function(url) {
  * arrays of values name will have `[]` added to the end. this transformation
  * takes place in `createForm`
  */
-FauxForm.prototype.setData = function(dataObject) {
-    this.rawData = dataObject;
+FauxForm.prototype.data = function(dataObject) {
+    if (typeof dataObject === 'undefined')
+        return this._data;
+    else
+        this._data = dataObject;
 };
 
 FauxForm.prototype.submit = function() {
