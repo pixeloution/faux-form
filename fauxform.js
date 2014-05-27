@@ -13,11 +13,11 @@
 function FauxForm(dataObject, url) {
     // can only be used as constructor
     if ( ! (this instanceof FauxForm))
-        return new FauxForm(dataObject);
+        return new FauxForm(dataObject, url);
 
-    this.rawData  = this.setData(dataObject);
-    this.url      = url || null;
-    this.formData = null;
+    dataObject && this.data(dataObject);
+    url && this.url(url);
+
 }
 
 /**
