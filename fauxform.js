@@ -58,7 +58,7 @@ FauxForm.prototype.submit = function() {
     ,   body = document.getElementsByTagName('body')[0];
 
     body.appendChild(form);
-    $('#FauxFormForm').submit();
+    document.getElementById('FauxFormForm').submit();
 };
 
 FauxForm.prototype._createForm = function() {
